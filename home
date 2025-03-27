@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Panel</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4; /* Light gray background for context */
+            margin: 0;
+        }
+
+        .panel-container {
+            background-color: #ffffff; /* White background for the panel */
+            padding: 20px;
+            border-radius: 8px; /* Optional: slightly rounded corners for the whole panel */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+            width: 350px; /* Adjust width as needed */
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* Space between sections */
+        }
+
+        /* Temperature Section */
+        .temp-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Space between rows */
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between; /* Space out pairs */
+            gap: 10px; /* Space between pairs in a row */
+        }
+
+        .data-pair {
+            display: flex;
+            gap: 8px; /* Space between label and value */
+            flex-grow: 1; /* Allow pairs to grow */
+        }
+
+        .data-pair .label,
+        .data-pair .value {
+            border: 1px solid black;
+            padding: 8px 10px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .data-pair .label {
+            min-width: 60px; /* Ensure labels have some minimum width */
+        }
+
+        .data-pair .value {
+            flex-grow: 1; /* Allow value box to fill remaining space */
+        }
+
+        /* Status Section */
+        .status-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Space between status items */
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Space between label and value */
+        }
+
+        .status-item .label {
+             border: 1px solid black;
+             padding: 8px 10px;
+             min-width: 100px; /* Fixed width for labels */
+             text-align: center;
+             font-size: 0.9em;
+        }
+
+        .status-item .status-value {
+            font-size: 1.4em; /* Larger font for values */
+            font-weight: bold;
+        }
+
+        .status-item .time-value {
+            font-family: 'Courier New', Courier, monospace; /* Monospace font for time */
+        }
+
+
+        /* Button Section */
+        .button-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            gap: 15px; /* Space between buttons */
+        }
+
+        .control-button {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 20px; /* Rounded corners */
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s ease; /* Smooth hover effect */
+        }
+
+        .control-button.manual { background-color: #aa77dd; } /* Purple */
+        .control-button.hold { background-color: #88cc66; }   /* Green */
+        .control-button.phase { background-color: #4444dd; }   /* Blue */
+        .control-button.reset { background-color: #dd4444; }   /* Red */
+
+        .control-button:hover {
+            opacity: 0.9; /* Slight fade on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="panel-container">
+        <div class="temp-section">
+            <div class="data-row">
+                <div class="data-pair">
+                    <span class="label">DB SET</span>
+                    <span class="value">125.56 F</span>
+                </div>
+                <div class="data-pair">
+                    <span class="label">WB SET</span>
+                    <span class="value">125.56 F</span>
+                </div>
+            </div>
+            <div class="data-row">
+                <div class="data-pair">
+                    <span class="label">DB</span>
+                    <span class="value">125.56 F</span>
+                </div>
+                <div class="data-pair">
+                    <span class="label">WB</span>
+                    <span class="value">125.56 F</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-section">
+            <div class="status-item">
+                <span class="label status-label">Set Time :</span>
+                <span class="status-value time-value">02:40:00</span>
+            </div>
+            <div class="status-item">
+                <span class="label status-label">Current Time :</span>
+                <span class="status-value time-value">02:00:00</span>
+            </div>
+            <div class="status-item">
+                <span class="label status-label">Phase : </span>
+                <span class="status-value">Lamina</span>
+            </div>
+            <div class="status-item">
+                <span class="label status-label">Mode : </span>
+                <span class="status-value">Manual</span>
+            </div>
+        </div>
+
+        <div class="button-section">
+            <button class="control-button manual">Manual (A)</button>
+            <button class="control-button hold">Hold B</button>
+            <button class="control-button phase">Phase (C)</button>
+            <button class="control-button reset">Reset (D)</button>
+        </div>
+    </div>
+</body>
+</html>
