@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hold Details Interface</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align panel to top */
+            min-height: 100vh;
+            background-color: #f0f0f0; /* Light background for context */
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .hold-mobile-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px; /* Adjust max width as needed */
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* Space between main sections */
+            box-sizing: border-box;
+        }
+
+        /* Info Section */
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Space between info lines */
+            font-size: 1.1em;
+            margin-bottom: 10px; /* Extra space after info section */
+        }
+
+        .info-line {
+            display: flex;
+            align-items: baseline; /* Align text based on baseline */
+        }
+
+        .info-label {
+            min-width: 150px; /* Adjust width to align colons */
+            font-weight: normal;
+            color: #333;
+            padding-right: 5px; /* Space before colon */
+            white-space: nowrap;
+        }
+
+        .info-value {
+            font-weight: bold;
+            color: #000;
+            margin-left: 5px; /* Space after colon */
+        }
+
+        .info-value.time-value {
+             font-family: 'Courier New', Courier, monospace; /* Monospace for time */
+        }
+
+        /* Hold Details Section */
+        .hold-details-section {
+             display: flex;
+             flex-direction: column;
+             gap: 15px; /* Space between detail boxes */
+        }
+
+        .hold-item-box {
+            border: 1px solid black;
+            padding: 12px 15px;
+            border-radius: 4px; /* Slight rounding */
+            font-size: 0.95em;
+            line-height: 1.5; /* Adjust line spacing */
+        }
+
+         .hold-item-box p {
+            margin: 0 0 5px 0; /* Adjust paragraph spacing */
+            color: #333;
+         }
+         .hold-item-box p:last-child {
+             margin-bottom: 0;
+         }
+
+
+        /* Button Section */
+        .button-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Space between buttons */
+            width: 100%; /* Ensure buttons can take full width */
+            margin-top: 10px; /* Extra space before button section */
+        }
+
+        .hold-mobile-button {
+            padding: 15px 20px; /* Generous padding */
+            border: none;
+            border-radius: 25px; /* Highly rounded corners */
+            color: white;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: opacity 0.2s ease;
+            width: 100%; /* Make buttons fill container */
+            box-sizing: border-box;
+        }
+
+        .hold-mobile-button:hover {
+            opacity: 0.9; /* Slight fade on hover */
+        }
+
+        /* Specific Button Colors */
+        .hold-mobile-button.start { background-color: #88cc66; }  /* Green */
+        .hold-mobile-button.delete { background-color: #dd4444; } /* Red */
+        .hold-mobile-button.home { background-color: #aa77dd; }   /* Purple */
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .hold-mobile-container {
+                padding: 20px;
+                gap: 20px;
+            }
+             .info-label {
+                 min-width: 120px; /* Adjust label width for smaller screens */
+             }
+            .info-section {
+                font-size: 1em;
+            }
+             .hold-item-box {
+                 font-size: 0.9em;
+                 padding: 10px 12px;
+             }
+            .hold-mobile-button {
+                padding: 12px 15px;
+                font-size: 1em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="hold-mobile-container">
+        <div class="info-section">
+            <div class="info-line">
+                <span class="info-label">Hold Data</span> : <span class="info-value">Hold 1</span>
+            </div>
+            <div class="info-line">
+                <span class="info-label">Fahase Name</span> : <span class="info-value">Lamina</span>
+            </div>
+            <div class="info-line">
+                <span class="info-label">Fahase Duration</span> : <span class="info-value time-value">4:03:00</span>
+            </div>
+        </div>
+
+        <div class="hold-details-section">
+            <div class="hold-item-box">
+                <p>Hold ID : hold1 PHASE : Lamina</p>
+                <p>Fahase Duration : 4:03:00</p>
+            </div>
+             <div class="hold-item-box">
+                <p>Hold ID : hold2 PHASE : Yolloing</p>
+                 <p>Fahase Duration : 4:23:00</p>
+            </div>
+             <div class="hold-item-box">
+                <p>Hold ID : hold3 PHASE : Color fix.</p>
+                 <p>Fahase Duration : 4:23:00</p>
+            </div>
+             <div class="hold-item-box">
+                 <p>Hold ID : hold4 PHASE : Stem Dy</p>
+                 <p>Fahase Duration : 4:23:00</p>
+            </div>
+        </div>
+
+        <div class="button-section">
+            <button class="hold-mobile-button start">Start (A)</button>
+            <button class="hold-mobile-button delete">Delet (C)</button>
+            <button class="hold-mobile-button home">Home (B)</button>
+        </div>
+    </div>
+</body>
+</html>
