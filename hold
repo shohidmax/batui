@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hold Interface</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align panel to top */
+            min-height: 100vh;
+            background-color: #f0f0f0; /* Light background for context */
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .hold-panel-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px; /* Adjust max width as needed */
+            display: flex;
+            flex-direction: column;
+            gap: 35px; /* Space between info and button sections */
+            box-sizing: border-box;
+        }
+
+        /* Info Section */
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px; /* Space between info lines */
+            font-size: 1.1em; /* Slightly larger font */
+        }
+
+        .info-line {
+            display: flex;
+        }
+
+        .info-label {
+            min-width: 150px; /* Adjust width to align colons */
+            font-weight: normal; /* Or bold if preferred */
+            color: #333;
+            padding-right: 10px; /* Space before colon */
+            white-space: nowrap;
+        }
+
+        .info-value {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .info-value.time-value {
+             font-family: 'Courier New', Courier, monospace; /* Monospace for time */
+        }
+
+
+        /* Button Section */
+        .button-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Space between buttons */
+            width: 100%; /* Ensure buttons can take full width */
+        }
+
+        .hold-button {
+            padding: 15px 20px; /* Generous padding */
+            border: none;
+            border-radius: 25px; /* Highly rounded corners */
+            color: white;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: opacity 0.2s ease;
+            width: 100%; /* Make buttons fill container */
+            box-sizing: border-box;
+        }
+
+        .hold-button:hover {
+            opacity: 0.9; /* Slight fade on hover */
+        }
+
+        /* Specific Button Colors */
+        .hold-button.hold-1 { background-color: #33b5e5; } /* Light Blue */
+        .hold-button.hold-2 { background-color: #ff4081; } /* Pink */
+        .hold-button.hold-3 { background-color: #5e35b1; } /* Dark Blue/Purple */
+        .hold-button.hold-4 { background-color: #dd4444; } /* Red */
+        .hold-button.start { background-color: #88cc66; }  /* Green */
+        .hold-button.delete { background-color: #dd4444; } /* Red */
+        .hold-button.home { background-color: #aa77dd; }   /* Purple */
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .hold-panel-container {
+                padding: 20px;
+                gap: 25px;
+            }
+             .info-label {
+                 min-width: 120px; /* Adjust label width for smaller screens */
+             }
+            .info-section {
+                font-size: 1em;
+            }
+            .hold-button {
+                padding: 12px 15px;
+                font-size: 1em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="hold-panel-container">
+        <div class="info-section">
+            <div class="info-line">
+                <span class="info-label">Hold Data</span> : <span class="info-value">Hold 1</span>
+            </div>
+            <div class="info-line">
+                <span class="info-label">Fahase Name</span> : <span class="info-value">Lamina</span>
+            </div>
+            <div class="info-line">
+                <span class="info-label">Fahase Duration</span> : <span class="info-value time-value">4:03:00</span>
+            </div>
+        </div>
+
+        <div class="button-section">
+            <button class="hold-button hold-1">Hold (1)</button>
+            <button class="hold-button hold-2">Hold (2)</button>
+            <button class="hold-button hold-3">Hold (3)</button>
+            <button class="hold-button hold-4">Hold (4)</button>
+            <button class="hold-button start">Start (A)</button>
+            <button class="hold-button delete">Delet (C)</button>
+            <button class="hold-button home">Home (B)</button>
+        </div>
+    </div>
+</body>
+</html>
