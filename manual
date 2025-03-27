@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Control Interface</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0; /* Light background for context */
+            margin: 0;
+            padding: 20px; /* Add padding for smaller screens */
+            box-sizing: border-box;
+        }
+
+        .manual-panel-container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px; /* Max width for the panel */
+            display: flex;
+            flex-direction: column;
+            gap: 30px; /* Space between main sections */
+            box-sizing: border-box;
+        }
+
+        /* Input Display Section */
+        .input-display-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .input-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-row .label {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            min-width: 60px;
+            font-size: 0.9em;
+        }
+
+        .input-row .value-box {
+            border: 1px solid black;
+            padding: 10px 15px;
+            flex-grow: 1; /* Take available space */
+            font-weight: bold;
+            font-size: 1.1em;
+            min-width: 80px; /* Minimum width */
+        }
+         .input-row .value-box.time-value {
+             font-family: 'Courier New', Courier, monospace;
+         }
+
+        .input-row .info-text {
+            font-size: 0.8em;
+            color: #555;
+            white-space: nowrap; /* Prevent wrapping */
+        }
+
+        /* Keypad and Options Section */
+        .keypad-options-section {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        /* Keypad Grid */
+        .keypad-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, auto);
+            gap: 8px;
+            flex-basis: 60%; /* Adjust basis as needed */
+        }
+
+        .keypad-button {
+            border: 1px solid black;
+            background-color: white;
+            padding: 10px 5px; /* Adjust padding */
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            min-height: 40px; /* Ensure consistent height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .keypad-button:hover {
+            background-color: #eee;
+        }
+
+        /* Options List */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-basis: 35%; /* Adjust basis as needed */
+        }
+
+        .option-button {
+            background-color: #88cc66; /* Green */
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 10px; /* Adjust padding */
+            text-align: center;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%; /* Make buttons fill container */
+            box-sizing: border-box;
+             min-height: 40px; /* Ensure consistent height */
+             display: flex;
+             justify-content: center;
+             align-items: center;
+        }
+
+         .option-button:hover {
+            opacity: 0.9;
+        }
+
+        /* Control Section */
+        .control-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .control-button {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s ease;
+        }
+
+        .control-button.home { background-color: #aa77dd; }    /* Purple */
+        .control-button.start { background-color: #4444dd; }   /* Blue */
+        .control-button.save { background-color: #88cc66; }    /* Green */
+        .control-button.reset { background-color: #dd4444; }   /* Red */
+
+        .control-button:hover {
+            opacity: 0.9;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .manual-panel-container {
+                padding: 15px;
+                gap: 20px;
+            }
+             .keypad-options-section {
+                flex-direction: column; /* Stack keypad and options on small screens */
+                gap: 20px;
+             }
+             .keypad-grid {
+                 flex-basis: auto; /* Reset basis */
+             }
+             .options-list {
+                 flex-basis: auto; /* Reset basis */
+                 flex-direction: row; /* Lay out options horizontally */
+                 flex-wrap: wrap; /* Allow wrapping */
+                 justify-content: center;
+             }
+             .option-button {
+                 width: auto; /* Adjust width */
+                 flex-grow: 1; /* Allow buttons to grow */
+                 min-width: 80px; /* Min width for options */
+                 font-size: 0.8em;
+             }
+             .input-row .info-text {
+                 display: none; /* Hide info text on small screens if needed */
+             }
+             .control-button {
+                 font-size: 0.9em;
+             }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="manual-panel-container">
+        <div class="input-display-section">
+            <div class="input-row">
+                <span class="label">DRY</span>
+                <span class="value-box">145 F</span>
+                <span class="info-text">input + D</span>
+            </div>
+            <div class="input-row">
+                <span class="label">WET</span>
+                <span class="value-box">145 F</span>
+                <span class="info-text">input + D</span>
+            </div>
+            <div class="input-row">
+                <span class="label">Time</span>
+                <span class="value-box time-value">02:00:00</span>
+                </div>
+        </div>
+
+        <div class="keypad-options-section">
+            <div class="keypad-grid">
+                <button class="keypad-button">1</button>
+                <button class="keypad-button">2</button>
+                <button class="keypad-button">3</button>
+                <button class="keypad-button">^</button> <button class="keypad-button">4</button>
+                <button class="keypad-button">5</button>
+                <button class="keypad-button">6</button>
+                <button class="keypad-button">v</button> <button class="keypad-button">7</button>
+                <button class="keypad-button">8</button>
+                <button class="keypad-button">9</button>
+                <button class="keypad-button">&lt;-</button> <button class="keypad-button">.</button>
+                <button class="keypad-button">0</button>
+                <button class="keypad-button">:</button>
+                <button class="keypad-button">OK</button>
+            </div>
+            <div class="options-list">
+                <button class="option-button">Yolloing</button>
+                <button class="option-button">Lamina</button>
+                <button class="option-button">Color F.</button>
+                <button class="option-button">Steam</button>
+            </div>
+        </div>
+
+        <div class="control-section">
+            <button class="control-button home">Home (A)</button>
+            <button class="control-button save">Save</button>
+            <button class="control-button start">Start (B)</button>
+            <button class="control-button reset">Reset</button>
+        </div>
+    </div>
+</body>
+</html>
